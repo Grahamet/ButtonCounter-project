@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Button-Counter-Graham</string>
+    <string name="Counter">Count: 0</string>
+    <string name="Increment">Increment</string>
+    <string name="Decrement">Decrement</string>
+    <string name="Clear">Clear</string>
 </resources>
