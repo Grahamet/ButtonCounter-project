@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         clear = findViewById(R.id.button_clear);
         tV = findViewById(R.id.textView);
 
-        colour = new int[] {Color.BLACK, Color.GREEN, Color.GRAY, Color.YELLOW, Color.BLUE, Color.CYAN};
+        colour = new int[] {Color.BLACK, Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN};
         int aryLength = colour.length;
         screenView = findViewById(R.id.rView);
 
