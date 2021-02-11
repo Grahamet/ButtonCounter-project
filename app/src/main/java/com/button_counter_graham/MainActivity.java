@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         inc = findViewById(R.id.button_inc);
         dec = findViewById(R.id.button_dec);
+        clear = findViewById(R.id.button_clear);
         tV = findViewById(R.id.textView);
 
         inc.setOnClickListener(new View.OnClickListener() {
