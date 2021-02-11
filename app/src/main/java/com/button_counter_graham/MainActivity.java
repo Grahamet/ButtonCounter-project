@@ -1,7 +1,9 @@
 package com.button_counter_graham;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Random random = new Random();
     View screenView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,46 +32,68 @@ public class MainActivity extends AppCompatActivity {
         clear = findViewById(R.id.button_clear);
         tV = findViewById(R.id.textView);
 
+
         colour = new int[] {Color.BLACK, Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN};
-        int aryLength = colour.length;
         screenView = findViewById(R.id.rView);
 
         inc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count ++;
-                tV.setText("Count: " + count);
-                int rNum = random.nextInt(aryLength);
-                screenView.setBackgroundColor(colour[rNum]);
+                increment();
             }
         });
 
         dec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count --;
-                tV.setText("Count: " + count);
-                int rNum = random.nextInt(aryLength);
-                screenView.setBackgroundColor(colour[rNum]);
+                decrement();
             }
         });
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count = 0;
-                tV.setText("Count: " + count);
-                int rNum = random.nextInt(aryLength);
-                screenView.setBackgroundColor(colour[rNum]);
+                clear();
             }
         });
+
+
+        if (savedInstanceState != null) {
+            count = savedInstanceState.getInt("count");
+            tV.setText("Count: " + count);
+        }
+    }
+
+    private void decrement() {
+        count --;
+        int aryLength = colour.length;
+        tV.setText("Count: " + count);
+        int rNum = random.nextInt(aryLength);
+        screenView.setBackgroundColor(colour[rNum]);
+    }
+
+    private void increment(){
+        count ++;
+        int aryLength = colour.length;
+        tV.setText("Count: " + count);
+        int rNum = random.nextInt(aryLength);
+        screenView.setBackgroundColor(colour[rNum]);
+    }
+
+    private void clear(){
+        count = 0;
+        int aryLength = colour.length;
+        tV.setText("Count: " + count);
+        int rNum = random.nextInt(aryLength);
+        screenView.setBackgroundColor(colour[rNum]);
     }
 
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
 
-
-
-
-
+        outState.putInt("count", count);
+    }
 
 }
